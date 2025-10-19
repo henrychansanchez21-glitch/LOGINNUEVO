@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Fondo con un degradado similar al de la imagen y desenfoque */
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de fondo borroso alrededor */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 0, 135, 0.5), rgba(0, 200, 255, 0.5));
+    z-index: -1;
+}
+
+/* -----------------------------------
+   Contenedor Principal (Glassmorphism)
+-------------------------------------- */
+.login-container {
+    /* Mismos estilos Glassmorfismo */
+    border-radius: 25px;
+    padding: 30px 40px;
+    width: 350px;
+    text-align: center;
+    color: white; 
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, rgba(160, 40, 100, 0.3), rgba(60, 40, 160, 0.3));
+}
+
+/* -----------------------------------
+   Elemento del Perfil
+-------------------------------------- */
+.profile-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    border: 2px solid rgba(255, 255, 255, 0.5); 
+}
+
+/* -----------------------------------
+   Campos de Entrada
+-------------------------------------- */
+.input-group {
+    position: relative;
+    margin-bottom: 35px; /* Aumentamos el margen para separar del botón */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5); 
+    padding-bottom: 5px;
+}
+
+.input-group .icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 0 10px 30px; 
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 1em;
+    outline: none;
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* -----------------------------------
+   Icono Toggle Contraseña (Nuevo)
+-------------------------------------- */
+.toggle-password {
+    position: absolute;
+    right: 5px; /* Posicionado a la derecha del campo */
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
+/* NOTA: Las reglas de .options, .forgot-link y .checkbox-container se eliminaron. */
+
+/* -----------------------------------
+   Botón de LOGIN
+-------------------------------------- */
+.login-button {
+    /* Mismos estilos del botón */
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 400px) {
+    .login-container {
+        width: 90%;
+        padding: 25px 30px;
+    }
+}
