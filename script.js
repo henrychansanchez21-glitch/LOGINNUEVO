@@ -30,7 +30,7 @@ document.querySelector('.glass-form').addEventListener('submit', function(event)
     const password = document.getElementById('password').value.trim();
 
     // 3. Definir las credenciales correctas
-    const CORRECT_KEY = 'TomateHub-VIP-@hot.com.gt';
+    const CORRECT_KEY = 'Tomate@gmail.com';
     const CORRECT_PASSWORD = 'Tomate';
     const REDIRECT_URL = 'https://henrychansanchez21-glitch.github.io/App-de-videos/';
 
