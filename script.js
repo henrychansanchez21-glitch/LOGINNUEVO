@@ -51,7 +51,7 @@ document.querySelector('.glass-form').addEventListener('submit', function(event)
 
 document.getElementById('buyUserButton').addEventListener('click', function() {
     // Redirige al enlace de Telegram
-    const BUY_URL = 'https://t.me/GrupoHHacks'; 
+    const BUY_URL = 'https://youtu.be/Dw31_HCjHLg?si=1puCCrOv4JQsc-ON'; 
     
     alert('Redirigiendo a Telegram para comprar usuario.');
     window.location.href = BUY_URL;
