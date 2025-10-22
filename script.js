@@ -51,7 +51,7 @@ document.querySelector('.glass-form').addEventListener('submit', function(event)
 
 document.getElementById('buyUserButton').addEventListener('click', function() {
     // Redirige al enlace de Telegram
-    const BUY_URL = 'https://t.me/compradeusuarios'; 
+    const BUY_URL = 'https://chat.whatsapp.com/Hdx9VpMS7iG1QSP2Au81ZU?mode=wwc'; 
     
     alert('Redirigiendo a Telegram para comprar usuario.');
     window.location.href = BUY_URL;
