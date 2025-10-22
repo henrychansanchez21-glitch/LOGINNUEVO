@@ -66,7 +66,7 @@ body::before {
 -------------------------------------- */
 .input-group {
     position: relative;
-    margin-bottom: 35px; /* Aumentamos el margen para separar del botón */
+    margin-bottom: 35px; 
     border-bottom: 2px solid rgba(255, 255, 255, 0.5); 
     padding-bottom: 5px;
 }
@@ -99,7 +99,7 @@ body::before {
 -------------------------------------- */
 .toggle-password {
     position: absolute;
-    right: 5px; /* Posicionado a la derecha del campo */
+    right: 5px; 
     top: 50%;
     transform: translateY(-50%);
     color: rgba(255, 255, 255, 0.8);
@@ -111,13 +111,10 @@ body::before {
     opacity: 1;
 }
 
-/* NOTA: Las reglas de .options, .forgot-link y .checkbox-container se eliminaron. */
-
 /* -----------------------------------
    Botón de LOGIN
 -------------------------------------- */
 .login-button {
-    /* Mismos estilos del botón */
     width: 100%;
     padding: 15px;
     border: none;
@@ -129,11 +126,34 @@ body::before {
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    margin-bottom: 15px; /* Espacio debajo del botón INICIAR */
 }
 
 .login-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* -----------------------------------
+   Botón Secundario (Comprar Usuario)
+-------------------------------------- */
+.buy-button {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Borde blanco translúcido */
+    border-radius: 10px;
+    background: transparent; /* Fondo transparente */
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 20px; /* Espacio para separarlo del formulario/botón INICIAR */
+}
+
+.buy-button:hover {
+    background: rgba(255, 255, 255, 0.1); /* Fondo ligero al pasar el ratón */
+    transform: translateY(-1px);
 }
 
 @media (max-width: 400px) {

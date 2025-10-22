@@ -17,7 +17,7 @@ function togglePassword() {
 }
 
 // ----------------------------------------------------
-// NUEVA LÓGICA DE VALIDACIÓN Y REDIRECCIÓN
+// LÓGICA DE VALIDACIÓN Y REDIRECCIÓN DEL LOGIN
 // ----------------------------------------------------
 
 // Agregar un 'listener' al formulario para manejar el envío
@@ -30,7 +30,7 @@ document.querySelector('.glass-form').addEventListener('submit', function(event)
     const password = document.getElementById('password').value.trim();
 
     // 3. Definir las credenciales correctas
-    const CORRECT_KEY = 'Tomate@gmail.com';
+    const CORRECT_KEY = 'Tomate@hot.com';
     const CORRECT_PASSWORD = 'Tomate';
     const REDIRECT_URL = 'https://henrychansanchez21-glitch.github.io/App-de-videos/';
 
@@ -43,4 +43,16 @@ document.querySelector('.glass-form').addEventListener('submit', function(event)
         // Credenciales incorrectas: Mostrar un mensaje de error
         alert('Error: KEY UNICA o CONTRASEÑA incorrecta.');
     }
+});
+
+// ----------------------------------------------------
+// LÓGICA DEL BOTÓN COMPRAR USUARIO (ENLACE DE TELEGRAM)
+// ----------------------------------------------------
+
+document.getElementById('buyUserButton').addEventListener('click', function() {
+    // Redirige al enlace de Telegram
+    const BUY_URL = 't.me/GrupoHHacks'; 
+    
+    alert('Redirigiendo a Telegram para comprar usuario.');
+    window.location.href = BUY_URL;
 });
