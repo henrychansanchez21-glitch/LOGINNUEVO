@@ -25,10 +25,11 @@
                 <i class="fas fa-eye-slash toggle-password" onclick="togglePassword()"></i>
             </div>
             
-            <button type="submit" class="login-button">INICIAR</button>
+            <button type="submit" id="loadingButton" class="loading-button">
+                <span class="button-text">INICIAR</span>
+                <i class="fas fa-spinner fa-spin spinner" style="display: none;"></i>
+            </button>
         </form>
-        
-        <button id="buyUserButton" class="buy-button">COMPRAR USUARIO</button>
         
     </div>
 

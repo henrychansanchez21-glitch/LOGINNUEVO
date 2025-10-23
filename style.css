@@ -95,7 +95,7 @@ body::before {
 }
 
 /* -----------------------------------
-   Icono Toggle Contraseña (Nuevo)
+   Icono Toggle Contraseña
 -------------------------------------- */
 .toggle-password {
     position: absolute;
@@ -112,9 +112,9 @@ body::before {
 }
 
 /* -----------------------------------
-   Botón de LOGIN
+   Botón de Carga (Loading Button)
 -------------------------------------- */
-.login-button {
+.loading-button {
     width: 100%;
     padding: 15px;
     border: none;
@@ -126,34 +126,36 @@ body::before {
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    margin-bottom: 15px; /* Espacio debajo del botón INICIAR */
+    margin-top: 15px; 
+
+    /* Estilos para el estado de CARGANDO */
+    position: relative;
+    display: flex; /* Para centrar el spinner/texto */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Oculta elementos que se salgan si se escalan */
 }
 
-.login-button:hover {
+.loading-button:hover:not(.loading) {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
 }
 
-/* -----------------------------------
-   Botón Secundario (Comprar Usuario)
--------------------------------------- */
-.buy-button {
-    width: 100%;
-    padding: 15px;
-    border: 2px solid rgba(255, 255, 255, 0.5); /* Borde blanco translúcido */
-    border-radius: 10px;
-    background: transparent; /* Fondo transparente */
-    color: white;
-    font-size: 1.2em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-    margin-top: 20px; /* Espacio para separarlo del formulario/botón INICIAR */
+/* Estado de carga activo */
+.loading-button.loading {
+    cursor: default;
+    opacity: 0.8;
 }
 
-.buy-button:hover {
-    background: rgba(255, 255, 255, 0.1); /* Fondo ligero al pasar el ratón */
-    transform: translateY(-1px);
+/* Ocultar texto y mostrar spinner */
+.loading-button.loading .button-text {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.loading-button .spinner {
+    font-size: 1.3em;
+    position: absolute;
 }
 
 @media (max-width: 400px) {

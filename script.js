@@ -1,58 +1,85 @@
 // Función para mostrar/ocultar contraseña al hacer clic en el icono
 function togglePassword() {
     const passwordField = document.getElementById('password');
-    const toggleIcon = document.querySelector('.toggle-password');
+    // CORRECCIÓN: Buscamos el icono dentro de la misma función
+    const toggleIcon = document.querySelector('.toggle-password'); 
 
     if (passwordField.type === 'password') {
-        // Cambia a tipo texto (visible)
         passwordField.type = 'text';
-        toggleIcon.classList.remove('fa-eye-slash'); // Icono: Ocultar (slash)
-        toggleIcon.classList.add('fa-eye'); // Icono: Mostrar (eye)
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
     } else {
-        // Cambia a tipo contraseña (oculta)
         passwordField.type = 'password';
-        toggleIcon.classList.remove('fa-eye'); // Icono: Mostrar (eye)
-        toggleIcon.classList.add('fa-eye-slash'); // Icono: Ocultar (slash)
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
     }
 }
 
 // ----------------------------------------------------
-// LÓGICA DE VALIDACIÓN Y REDIRECCIÓN DEL LOGIN
+// LÓGICA DE VALIDACIÓN Y BOTÓN DE CARGA MEJORADO
 // ----------------------------------------------------
+
+const loadingButton = document.getElementById('loadingButton');
+const buttonText = loadingButton.querySelector('.button-text');
+const spinner = loadingButton.querySelector('.spinner');
+
+// Función para cambiar el estado del botón a "cargando"
+function startLoading() {
+    loadingButton.classList.add('loading');
+    loadingButton.classList.remove('success', 'error'); // Limpiar estados anteriores
+    loadingButton.disabled = true; // Deshabilitar para evitar múltiples envíos
+    buttonText.textContent = 'Cargando...'; // Opcional, el CSS ya lo oculta
+    spinner.style.display = 'inline-block'; // Asegurarse de que el spinner esté visible
+}
+
+// Función para cambiar el estado del botón a "normal" o "resultado"
+function stopLoading(success) {
+    loadingButton.classList.remove('loading');
+    loadingButton.disabled = false;
+    spinner.style.display = 'none'; // Ocultar spinner
+
+    if (success) {
+        loadingButton.classList.add('success');
+        buttonText.textContent = '¡Éxito!'; // Mensaje de éxito
+        setTimeout(() => {
+            buttonText.textContent = 'INICIAR'; // Resetear después de un tiempo
+            loadingButton.classList.remove('success');
+        }, 2000); 
+    } else {
+        loadingButton.classList.add('error');
+        buttonText.textContent = 'Fallido'; // Mensaje de error
+        setTimeout(() => {
+            buttonText.textContent = 'INICIAR'; // Resetear después de un tiempo
+            loadingButton.classList.remove('error');
+        }, 2000); 
+    }
+}
 
 // Agregar un 'listener' al formulario para manejar el envío
 document.querySelector('.glass-form').addEventListener('submit', function(event) {
-    // 1. Prevenir el envío de formulario por defecto (para evitar la recarga de página)
     event.preventDefault();
 
-    // 2. Obtener los valores de los campos de entrada
-    const keyUnica = document.getElementById('email').value.trim(); // Se utiliza el ID 'email' del input de KEY UNICA
+    // Iniciar el estado de carga
+    startLoading();
+
+    const keyUnica = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
 
-    // 3. Definir las credenciales correctas
     const CORRECT_KEY = 'Tomate@hot.com';
     const CORRECT_PASSWORD = 'Tomate';
     const REDIRECT_URL = 'https://henrychansanchez21-glitch.github.io/App-de-videos/';
-
-    // 4. Comprobar las credenciales
-    if (keyUnica === CORRECT_KEY && password === CORRECT_PASSWORD) {
-        // Credenciales correctas: Redirigir al usuario
-        alert('Inicio de sesión exitoso. Redirigiendo...');
-        window.location.href = REDIRECT_URL;
-    } else {
-        // Credenciales incorrectas: Mostrar un mensaje de error
-        alert('Error: KEY UNICA o CONTRASEÑA incorrecta.');
-    }
-});
-
-// ----------------------------------------------------
-// LÓGICA DEL BOTÓN COMPRAR USUARIO (ENLACE DE TELEGRAM)
-// ----------------------------------------------------
-
-document.getElementById('buyUserButton').addEventListener('click', function() {
-    // Redirige al enlace de Telegram
-    const BUY_URL = 'https://chat.whatsapp.com/Hdx9VpMS7iG1QSP2Au81ZU?mode=wwc'; 
     
-    alert('Redirigiendo a Telegram para comprar usuario.');
-    window.location.href = BUY_URL;
+    // Simular un tiempo de carga (2.5 segundos)
+    setTimeout(() => {
+        if (keyUnica === CORRECT_KEY && password === CORRECT_PASSWORD) {
+            stopLoading(true); // Detener carga con éxito
+            setTimeout(() => { // Pequeño retraso antes de la redirección para ver el mensaje de éxito
+                alert('Inicio de sesión exitoso. Redirigiendo...');
+                window.location.href = REDIRECT_URL;
+            }, 500); // 0.5 segundos después del mensaje de éxito
+        } else {
+            stopLoading(false); // Detener carga con fallo
+            alert('Error: KEY UNICA o CONTRASEÑA incorrecta.');
+        }
+    }, 2500); // Aumentado a 2.5 segundos para apreciar la animación
 });
